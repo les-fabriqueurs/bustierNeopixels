@@ -44,17 +44,17 @@ void setup() {
 
 void loop() {
   // Some example procedures showing how to display to the pixels:
-  colorWipe(strip1.Color(255, 0, 0), 50); // Red
-  colorWipe(strip1.Color(0, 255, 0), 50); // Green
-  colorWipe(strip1.Color(0, 0, 255), 50); // Blue
+  colorWipe(strip1.Color(25, 0, 0), 50); // Red
+  colorWipe(strip1.Color(0, 25, 0), 50); // Green
+  colorWipe(strip1.Color(0, 0, 25), 50); // Blue
   // Send a theater pixel chase in...
-  theaterChase(strip1.Color(127, 127, 127), 50); // White
-  theaterChase(strip1.Color(127, 0, 0), 50); // Red
-  theaterChase(strip1.Color(0, 0, 127), 50); // Blue
+ // theaterChase(strip1.Color(127, 127, 127), 50); // White
+ // theaterChase(strip1.Color(127, 0, 0), 50); // Red
+  //theaterChase(strip1.Color(0, 0, 127), 50); // Blue
 
   rainbow(20);
   rainbowCycle(20);
-  theaterChaseRainbow(50);
+ // theaterChaseRainbow(50);
 }
 
 // Fill the dots one after the other with a color
@@ -144,12 +144,12 @@ void theaterChaseRainbow(uint8_t wait) {
 uint32_t Wheel(byte WheelPos) {
   WheelPos = 255 - WheelPos;
   if(WheelPos < 85) {
-    return strip1.Color(255 - WheelPos * 3, 0, WheelPos * 3);
+    return strip1.Color((255 - WheelPos * 3)/5, 0, (WheelPos * 3)/5);
   }
   if(WheelPos < 170) {
     WheelPos -= 85;
-    return strip1.Color(0, WheelPos * 3, 255 - WheelPos * 3);
+    return strip1.Color(0, (WheelPos * 3)/5, (255 - WheelPos * 3)/5);
   }
   WheelPos -= 170;
-  return strip1.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
+  return strip1.Color((WheelPos * 3)/5, (255 - WheelPos * 3)/5, 0);
 }
